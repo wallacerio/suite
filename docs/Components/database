@@ -1,0 +1,67 @@
+#Database
+
+	Este componente permite a comunicação com banco de dados.
+
+
+	#Utilização:
+
+		Para sua utilização deve-se primeiramente carregar a base.
+
+		Exemplo:
+
+			$database = Suite::component('database')->load(array(
+				'driver'=>'mysql',				
+				'host'=> '',
+				'user'=>'',
+				'password'=>'',				
+			));
+
+		+ Apos o carregamento é possivel acessar os dados do banco.
+
+		Exemplo:
+
+		$result = $database->select(array(			
+			'row'=>'users',			
+			'where'=> 'name = fulano '
+		));
+
+
+
+# Driver
+
+
+	JsonDirDB:
+
+	+ Load
+
+		$database = Suite::component('database')->load(array(
+			'driver'=>'JsonDirDB',				
+			'path'=> $appDir . '_data/plugins/registers/',			
+			'encrypt'=>array('key'=>'0123456')
+		));
+
+
+
+	+ Select
+
+		$result = $database->select(array(
+			'base'=>'',
+			'row'=>'',
+			'where'=> ''			
+		));
+
+		base = base das informações
+		row = linha
+
+		Exemplo:
+			
+			base = users
+
+			row = maria
+
+			where = country.state=sao-paulo[and]country.city=santo-andre
+
+			where = name=Fulano da silva
+
+
+	+ Insert

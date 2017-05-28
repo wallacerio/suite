@@ -1,0 +1,89 @@
+#Introdution
+
+	Este componente permite execução de comandos via terminal.
+
+
+
+# Criar entradas personalizadas.
+
+	Crie um array com informações sobre o comando a ser executado:
+
+	description = exibe a descrição do commando
+	function = função anonima a ser executado caso o comando seja chamado
+
+	OBS: defina a chamada do comando através das chaves do array, no exemplo abaixo a chamada ao código se da por
+		"-database" ou "-dropdb".
+
+	Chamada:
+
+		SuiteConsole::addParameters('NOME_DO_COMPONENT',ARRAY_DE_PARAMETROS);
+
+	Exemplo:
+
+		$array = array(
+			'-database'=>array(
+				'description'=>'Create database',
+				'function' => create_function('', ' 
+						return CompConsole::output("	\t ON  ",array("breackline"=>false,"forecolor"=>"green","backcolor"=>"","bold"=>true),true);
+				')
+			),
+			'-dropdb'=>array(
+				'description'=>'Drop database',
+				'function' => function(){return 4;}
+			)
+		);
+
+		SuiteConsole::addParameters('database',$array);
+
+
+	# Utilizar o terminal para chamar o console
+
+	Exemplo 2:
+
+		$ php console
+
+		Este exemplo lista os comandos disponiveis
+
+
+	Exemplo 3:
+
+		# php console -database
+
+		Este exemplo executa o código inserido através do Exemplo 1
+
+
+
+	Executar URL:
+
+		É possivel enviar uma URL para ser executada, juntamente com um parametro POST,
+		então o resultado dessa requisição será incluido nas Opções do console.
+
+		Exemplo:
+
+
+		$array = array(
+			'-database'=>array(
+				'description'=>'Create database',				
+				'execurl' => 'http://domain/option-console/list',
+				'execurl-function' => '
+					$componentsInstalled = Suite_globals::get("components/list");
+					return array("components-installed"=>json_encode($componentsInstalled));
+				'
+			)
+			
+		);
+
+		SuiteConsole::addParameters('database',$array);
+
+		OBS: o retorno da chamada HTTP em execurl, deve ser um json conténdo um array com as seguinte chaves:
+
+			'content' // string como texto para exibição no terminal
+			'function-string' // string contendo código PHP para ser executado no terminal do cliente
+
+		Exemplo de retorno com a chamada execurl:
+
+			echo json_encode(array(
+					'content' => 'success',
+					'function-string' => 'echo "success to function call";'
+				)
+			);

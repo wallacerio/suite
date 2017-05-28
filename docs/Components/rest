@@ -1,0 +1,25 @@
+# REST
+
+	Route:
+
+		Executa uma função com base na URL acessada, a execução leva em consideração
+		o parametro de rota passado.
+
+		Há 2 formas de passar o parametro de rota:
+
+		1. passe somente um caminho fixo.
+
+			Exemplo:
+
+				Suite::component('rest')->route('/category/item',function(){
+					echo 'route found';
+				});
+
+
+		2. passe um caminho com variaveis.
+
+			Exemplo:
+
+				Suite::component('rest')->route('/{name}/{age}',function($name,$age){
+					echo $name.'/'.$age;
+				});

@@ -1,0 +1,207 @@
+# Criar uma opção no console
+
+	Para criar uma opção no console siga os passo a seguir:
+
+	1. inclua o seguinte código em seu componente, plugin ou qualquer outro lugar, de preferencia no método
+		__construct.
+
+		SuiteSetup::addOption([NOME DA CATEGORIA DO COMANDO],[ARRAY DE ATRIBUTOS DO COMANDO]);
+
+	2.	no array dos atributos do commando é necessário alguns atributos, segue:
+
+		@type			=	determina o tipo da opção
+		@description	=	descreve a função da opção
+		@function 		=	código PHP a ser executado quando o usuário chamar a opção (criptografado em base64)
+
+		@function:
+
+			No attributo @function pode conter um código PHP, mas sempre dever ser retornado com um array semelhante ao abaixo:
+
+				$array = array(						
+					'type'=>'text',									
+					'output'=>'opção executada com success!'									
+				);
+
+			# segue lista de attributos permitidos:
+
+				type:
+					text		=	define a ação de exibir um texto
+					lista 		=	define que o conteúdo será uma sub lista de opções
+					inputs		=	define que o conteúdo será uma lista de inputs para preenchimento
+					code 		=	define que o conteúdo será um código (base64) ?(rever necessidade)
+					code-text 	=	define que o conteúdo será um código (texto puro)
+					command 	=	define que o conteúdo será um código (base64)
+
+				O conteúdo de output depende do tipo(type) utilizado, segue exemplos:
+
+				Exemplo text:
+
+					$array = array(						
+						'type'=>'text',									
+						'output'=>'opção executada com success!'								
+					);
+
+				Exemplo lista:
+
+					$arraylist[] = array(						
+						'type'=>'button',
+						'text'=>'opção 1',
+						'action'=>$key.' -off',						
+					);
+
+					$arraylist[] = array(						
+						'type'=>'button',
+						'text'=>'opção 2',
+						'action'=>$key.' -off',						
+					);
+
+					$array = array(						
+						'type'=>'list',									
+						'output'=>$arraylist								
+					);
+					
+					# atributos do array $arraylist[]
+
+						type	=	define o tipo de ação da opção da lista
+						text 	=	define o texto que sera mostrado como opção da lista
+						action 	=	define a ação que será executada ao acionar a opção (action = parametros do comando no terminal)
+
+
+
+
+				Exemplo inputs:
+
+					$inputs["number"] = array(
+						"type"=>"text",
+						"title"=>"insira um numero",
+						"value"=>"1",
+						"validate"=>"1|2"
+					);
+
+					$inputs["caracter"] = array(
+						"type"=>"text",
+						"title"=>"insira uma letra",					
+					);
+
+
+					$array = array(						
+						'type'=>'inputs',									
+						'output'=>$inputs							
+					);	
+
+					# Detalhe:
+
+						type		=	define o tipo do input (text,radio,checklist)
+						title		=	define o titulo do input
+						value		=	define um valor padrão para exibir
+						validate	=	define os valores válidos, devem ser separados por um pipe (|)
+
+				Exemplo code:
+
+					$array = array(						
+						'type'=> 'code',									
+						'output'=> base64_encode(" echo 'test'; return 'este teste';")
+					);
+
+
+			# capturar lista em um servidor remoto e exibir no servidor local.
+
+				Na opção utilize o parametro @type como 'remote-commando', assim para sinalizar que é um
+					commando que ira capturar uma informação remota.
+
+				Em @function coloque o código responsável por capturar o conteúdo remoto, lembrando que
+					esse código deve ser retornado em base64, alem do retorno em array contendo o
+					atributo type e output.
+
+				Exemplo:
+
+				$array = array(
+					'@type'=>'category',
+					'install'=>array(
+						'@type'=>'remote-command',
+						'@description'=>'Install new components',
+						'@function' =>base64_encode('			
+
+								$argsString = implode("%20", $args);
+							
+								$result = Suite_libs::run("Http/Request/url",array(							
+									"url"=>"URL_DO_SERVIDOR_REMOTO?PARAMETROS_GET",														
+								));
+					
+								$resultObj = json_decode($result,"true");
+								if($resultObj["status"]=="success"){
+									$data = $resultObj["data"];						
+									return $data;
+								}
+
+								return null;						
+						')											
+					)
+				);
+
+				SuiteSetup::addOption('servidor-remoto',$array);
+
+	
+		3. para criar sub-menu, segue:
+
+			no [ARRAY DE ATRIBUTOS DO COMANDO] contem o array da lista de opções, então para criar
+			sub-menu basta apenas colorar outro array dentro do array ja criado.
+
+			Obs: as opções com @ (arroba) não serão identificadas como sub-menu, então qualquer opção sem o @,
+				será identificada como um sub menu, e para que seja idenficado como sub-menu inclua neste
+				array o @type 'category' para definir como uma categoria, 
+				ou @type 'command' para definir como um comando.
+
+			Exemplo:
+
+			$array = array(
+				'@type'=>'category',
+				"option"=>array(
+					'@type'=>'command',
+					'@description'=>'command 1',					
+					'@function' => base64_encode(' return array("type"=>"text", "output"=>"test"); ')					
+					"category-options"=>array(
+						'@type'=>'category',
+						'@description'=>'category 1',															
+						"command-category-options"=>array(
+							'@type'=>'command',
+							'@description'=>'category 1',									
+							'@function' => base64_encode(' return array("type"=>"text", "output"=>"test"); ')												
+						)
+					),
+					"command-options"=>array(
+						'@type'=>'command',
+						'@description'=>'category 1',									
+						'@function' => base64_encode(' return array("type"=>"text", "output"=>"test"); ')												
+					)
+				)
+			);
+
+			SuiteSetup::addOption('basic',$array);	
+
+
+
+
+	Exemplo:
+
+	$array = array(
+		'@type'=>'category',
+		"generate-options"=>array(
+				'@type'=>'command',
+				'@description'=>'Generate the options config file',					
+				'@function' => base64_encode(' return array("type"=>"text", "output"=>"test"); ')					
+			)
+	);
+
+	SuiteSetup::addOption('basic',$array);
+
+
+
+
+
+
+
+
+	exemplo de chamada através do navegador:
+
+		http://localhost/lp/lps/_component/setup/console?command=basic/generate-options&parameters=-return%20{%22urlmode%22:%22query%22,%22debug%22:%22true%22,%22charset%22:%22utf-8%22,%22app%22:%22default%22,%22username%22:%22admin%22,%22password%22:%22suite%22}

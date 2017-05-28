@@ -1,0 +1,42 @@
+# Biblioteca de classes bases para utilização do Suite Framework
+
+	As classes neste diretório seguem a seguinte estrutura:
+
+	Exemplo:
+
+		libs---
+			/Files				=	Diretório que especifica a função da classe.
+				Scan.php		=	Classe que contém metódos especificos.
+
+
+		Exemplo de chamada:
+
+			Suite_libs::run('Files/Scan/onlyFilesRecursive','/domain/site/');	
+
+
+	Exemplo 2:
+
+		libs---
+			/Files				=	Diretório que especifica a função da classe.
+				Files.php		=	Classe que contém metódos especificos.
+
+
+		Exemplo de chamada:
+
+			Suite_libs::run('Files/Scan/onlyFilesRecursive','/domain/site/');	
+
+
+# Executando as classes -------------------------------------
+
+	Suite_libs::run(CLASSE,PARAMETROS);
+
+		CLASSE = string identificando a classe, o caminho da classe deve ser separado por barra "/"
+		PARAMETROS = string ou array contendo parametros a ser enviado para a classe.
+
+	Exemplo:
+
+		Suite_libs::run('Files/Scan/onlyFilesRecursive','/domain/site/');	
+
+	Exemplo 2:
+
+		Suite_libs::run('Http/Request/url',array('url'=>'http://domain.com','method'=>'get'));	

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<form method="post" class="forms" name="example1-form">
+		<input type="text" name="name" placeholder="Name" required  />
+		<div id="resultForm-example1"></div>
+	</form>
+
+<script type="text/javascript">
+  simplifyForm.focus('[name="example1-form"]');    
+
+  simplifyForm.register('[name="example1-form"]',{
+        action:'http://webfocosaopaulo.com.br/api/mail/',    
+    },
+    // callback
+    function(response){    
+        var responseObj = JSON.parse(response);
+        if(responseObj.status=='success'){
+            document.querySelector('#resultForm-example1').innerHTML = "Name correct!";              
+        }else{
+            document.querySelector('#resultForm-example1').innerHTML = "Name invalid";  
+        }
+
+    },
+    // validator
+    function(data){
+    	// if(data.name == "123")
+      data.wfapimail_to = 'wallace@webfoco.com';//xml_content_emal;
+      data.wfapimail_from = 'noreply@webfoco.com';
+      data.wfapimail_subject = 'novo cadastro - Vero Condutor';
+    });
+
+
+</script>
+
+</body>
+</html>

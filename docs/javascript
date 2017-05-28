@@ -1,0 +1,18 @@
+
+#Capturar  globals
+	
+	Para capturar informações da aplicação utilize o código abaixo, ele
+	faz uma chamada a cookie e armazena na variavel suite, apartir dessa variavel
+	é possivel capturar informações de sua aplicação.
+
+	Código:
+
+	// Access the suite application data
+	if(typeof suite != 'object'){var suite = {getCookie:function(cname) {var name = cname + "="; var ca = document.cookie.split(';'); for(var i = 0; i <ca.length; i++) {var c = ca[i]; while (c.charAt(0)==' ') {c = c.substring(1); } if (c.indexOf(name) == 0) {return c.substring(name.length,c.length); } } return ""; }, get:function(){return JSON.parse(decodeURIComponent(suite.getCookie('suite'))); } } }
+
+
+	Para capturar informações utilize o código abaixo:
+
+		suite.get(); // returna array com os valores
+
+		

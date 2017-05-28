@@ -1,0 +1,94 @@
+#Introducao
+
+#Resumo -----------
+
+Suite é um Framework PHP é baseado em HMVC, ele disponibiliza uma estrutura de desenvolvimento em módulos, 
+de forma hierarquica, permitindo assim uma maior escalabilidade na aplicação.
+
+Por utilizar módulos, o desenvolvimento se torna mais fácil, dinâmico e rápido além de permitir uma maior organização.
+
+#Estrutura da aplicação -----------
+
+Toda a aplicação estará dentro do diretório "app" do domínio.
+
+O Suite permite o desenvolvimento de varios sites em um mesmo projeto, 
+sendo assim cada projeto de site estará dentro do diretório "app".
+
+Segue a estrutura básica de uma aplicação:
+
+/---
+	app/
+		_assets/
+		_config/
+		_data/
+		_error/
+		_html
+		_libs
+		_modules/
+		_plugins/
+
+
+_assets:
+	Todos os seus arquivos de imagens, javascript e css ficarão neste diretório.
+
+_config:
+	Contém arquivos de configuração da aplicação, segue os arquivos básicos:
+
+		plugins.json: arquivo responsável por habilitar os plugins.
+		menu.json: arquivo responsável pela configuração dos menus da aplicação.
+
+_data:
+	Neste diretório conterá arquivos para utilização dos plugins e componentes da aplicação.
+
+_error:
+	Neste diretório conterá os modulos de erro da aplicação.
+
+_html:
+	Neste diretório conterá os arquivos de layout utilizado pela aplicação.
+
+_libs:
+	Neste diretório conterá as classes globais da aplicação.
+
+_modules:
+	Neste diretório conterá os controlles, models e views da aplicação.
+
+_plugins:
+	Neste diretório conterá os plugins utilizados pela aplicação.
+
+
+# Arquivos de configuração iniciais -----------
+
+	O Suite utiliza o arquivo 'options.json' localizado na raíz do dominio para definições iniciais.
+
+	/---
+		options.json
+
+	Segue as opções de configuração deste arquivo:
+
+		{
+		    "modeaccess": "rewrite",     
+		    "debug": "enable",
+		    "charset": "utf-8",   
+		    "app": "default"
+		}
+
+
+	modeaccess: 
+		define o modo de acesso ao site, existe 2 valores possiveis, 
+		rewrite - para utilizar o modo de reescrita de url (url amigaveis), e query - para utilizar parametro de url.
+
+	debug:
+		Permite mostrar mensagens de erro da aplicação, utilize "enable" para habilitar e "disable" para deixar desabilitado.
+
+	charset:
+		Define a codificação de caracteres da aplicação.
+
+	app:
+		Define a aplicação ativa.
+
+
+
+OBS:
+	Com plugin "Manager" você pode utilizar uma interface gráfica para configurar o 'options.json' 
+	além de possuir diversas outras funcionalidades, o "Manager" é um gerenciador da aplicação 
+	e CMS - para gerenciamento de conteúdo.

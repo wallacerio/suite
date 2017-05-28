@@ -1,0 +1,8 @@
+Mode Response Control.php
+=========================
+
+Example:
+	
+	return array('http'=>array('response'=>'404'));			
+
+	return array('http'=>array('response'=>'307','location'=>'url'));			

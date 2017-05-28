@@ -1,0 +1,13 @@
+
+# Para executar um método diretamente via url,
+ execute da seguinte maneira:
+
+ http:// url do site + _plugin + nome_do_plugin + metodo
+
+ Exemplo:
+
+	http://site.com.br/_plugin/contact/runform
+
+
+	esta url ira chamar o método runformAction() no Control.php do 
+	plugin contact.

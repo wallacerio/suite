@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tabs Responsible - iTabs</title>
+	<meta name="viewport" content="initial-scale=1,minimum-scale=1, maximum-scale=1,user-scalable=no">  
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+	<link  rel="stylesheet" href="itabs.css">
+	<script type="text/javascript" src="itabs.js"></script>	
+</head>
+<body>
+
+<h1>Tabs Responsible - iTabs - v1.1</h1>
+
+<p>Developed by Wallace Rio &lt;wallrio@gmail.com&gt;</p>
+<hr>
+
+<h2>Download files</h2>
+<a href="itabs.css">itabs.css</a><br>
+<a href="itabs.js">itabs.js</a>
+<br><br><br>
+
+<h2>Cross-Browser</h2>
+<p>Tested on Firefox 45 / IE 8 / Opera 12 / Chrome 38 / Safari 5</p>
+<br><br>
+
+<h2>Using</h2>
+<p>Insert script tag and link tag into your head document html</p>
+<pre>
+	&lt;link  rel="stylesheet" href="itabs.css"&gt;
+	&lt;script type="text/javascript" src="itabs.js"&gt;&lt;/script&gt;
+</pre>
+<br><br>
+
+
+<h2>Change the style on css file (itabs.css)</h2>
+<p>Is recommend include other file css for changes</p>
+<br><br>
+
+<hr>
+
+<h3>Example</h3>
+
+<h2>Tabs default</h2>
+<p>Insert markup above:</p>
+<pre>
+	&lt;div class="itabs tabFlat"&gt;
+		
+		&lt;div data-rel="tabs" &gt;
+			&lt;a data-rel="tab" data-for="view1" data-status="active"&gt;view1&lt;/a&gt;
+			&lt;a data-rel="tab" data-for="view2" disabled="disabled"&gt;view2&lt;/a&gt;
+			&lt;a data-rel="tab" data-for="view3"  &gt;view3&lt;/a&gt;
+		&lt;/div&gt;
+
+		&lt;div data-rel="slides"&gt;
+			&lt;div data-rel="slide" data-id="view1"   &gt;
+				view 1	
+			&lt;/div&gt;
+			&lt;div data-rel="slide" data-id="view2"&gt;
+				view 2
+			&lt;/div&gt;
+			&lt;div data-rel="slide" data-id="view3" &gt;
+				view 3
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+	&lt;/div&gt;
+</pre>
+
+<div class="itabs tabFlat" >
+		
+	<div data-rel="tabs" >
+		<a data-rel="tab" data-for="view1" data-status="active">view 1</a>
+		<a data-rel="tab" data-for="view2" data-disabled="disabled">view 2</a>
+		<a data-rel="tab" data-for="view3"  >view 3</a>
+	</div>
+
+	<div data-rel="slides">
+		<div data-rel="slide" data-id="view1"   >
+			view 1	
+		</div>
+		<div data-rel="slide" data-id="view2">
+			view 2
+		</div>
+		<div data-rel="slide" data-id="view3" >
+			view 3					
+		</div>
+	</div>
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h3>Example 2 - Action run-time</h3>
+	<p>click on second tab for visualize the action</p>
+
+<br>
+<div class="itabs tabFlat" id="ajax" >
+		
+		<div data-rel="tabs" >
+			<a data-rel="tab" data-for="view1a" data-status="active">view 1 a</a>
+			<a data-rel="tab" data-for="view2a" >view 2 a</a>
+			<a data-rel="tab" data-for="view3a"  >view 3 a</a>
+		</div>
+
+		<div data-rel="slides">
+			<div data-rel="slide" data-id="view1a"   >
+				view 1 a	 
+			</div>
+			<div data-rel="slide" data-id="view2a">
+				view 2 a
+			</div>
+			<div data-rel="slide" data-id="view3a" >
+				view 3 a
+			</div>
+		</div>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<pre>
+	&lt;div class="itabs tabFlat" id="ajax" &gt;
+		
+		&lt;div data-rel="tabs" &gt;
+			&lt;a data-rel="tab" data-for="view1a" data-status="active"&gt;view 1 a&lt;/a&gt;
+			&lt;a data-rel="tab" data-for="view2a" disabled="disabled"&gt;view 2 a&lt;/a&gt;
+			&lt;a data-rel="tab" data-for="view3a"  &gt;view3 &lt;/a&gt;
+		&lt;/div&gt;
+
+		&lt;div data-rel="slides"&gt;
+			&lt;div data-rel="slide" data-id="view1a"   &gt;
+				view 1 a
+			&lt;/div&gt;
+			&lt;div data-rel="slide" data-id="view2a"&gt;
+				view 2 a
+			&lt;/div&gt;
+			&lt;div data-rel="slide" data-id="view3a" &gt;
+				view 3 a
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+	&lt;/div&gt;
+</pre>
+
+	<p>Using on script</p>
+		<pre>
+			&lt;script type="text/javascript"&gt;
+				itabs('ajax').event('click').tab('view2a',function(e){
+					e.action.tab().content('tab new');		
+					e.action.slide().content('content new');					
+				});
+			&lt;/script&gt;
+		</pre>
+
+
+<script type="text/javascript">
+	itabs('ajax').event('click').tab('view2a',function(e){
+		e.action.tab().content('tab new');		
+		e.action.slide().content('content new');
+	
+	});
+</script>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h3>Example 3 - tab inside on tab</h3>
+	<p>Insert tag of tab inside other tab changing the attributes, 'id' if exist, 'data-for' and 'data-id'</p>
+
+<br>
+
+<div class="itabs tabFlat"  >
+		
+		<div data-rel="tabs" >
+			<a data-rel="tab" data-for="view1b" data-status="active">view 1 b</a>
+			<a data-rel="tab" data-for="view2b" >view 2 b</a>
+			<a data-rel="tab" data-for="view3b"  >view 3 b</a>
+		</div>
+
+		<div data-rel="slides">
+			<div data-rel="slide" data-id="view1b"   >
+				
+				<div class="itabs tabFlat"  >
+		
+						<div data-rel="tabs" >
+							<a data-rel="tab" data-for="view1c" >view 1 c</a>
+							<a data-rel="tab" data-for="view2c" data-status="active">view 2 c</a>
+							<a data-rel="tab" data-for="view3c"  >view 3 c</a>
+						</div>
+
+						<div data-rel="slides">
+							<div data-rel="slide" data-id="view1c"   >
+								view 1 c	
+							</div>
+							<div data-rel="slide" data-id="view2c">
+								view 2 c
+							</div>
+							<div data-rel="slide" data-id="view3c" >
+								view 3 c
+							</div>
+						</div>
+				</div>
+
+
+			</div>
+			<div data-rel="slide" data-id="view2b">
+				view 2 b
+			</div>
+			<div data-rel="slide" data-id="view3b" >
+				view 3 b
+			</div>
+		</div>
+</div>
+
+<br>
+
+
+<pre>
+
+
+&lt;div class="itabs tabFlat"  &gt;
+		
+		&lt;div data-rel="tabs" &gt;
+			&lt;a data-rel="tab" data-for="view1b" data-status="active"&gt;view 1 b&lt;/a&gt;
+			&lt;a data-rel="tab" data-for="view2b" &gt;view 2 b&lt;/a&gt;
+			&lt;a data-rel="tab" data-for="view3b"  &gt;view 3 b&lt;/a&gt;
+		&lt;/div&gt;
+
+		&lt;div data-rel="slides"&gt;
+			&lt;div data-rel="slide" data-id="view1b"   &gt;
+				
+				&lt;div class="itabs tabFlat"  &gt;
+		
+						&lt;div data-rel="tabs" &gt;
+							&lt;a data-rel="tab" data-for="view1c" &gt;view 1 c&lt;/a&gt;
+							&lt;a data-rel="tab" data-for="view2c" data-status="active"&gt;view 2 c&lt;/a&gt;
+							&lt;a data-rel="tab" data-for="view3c"  &gt;view 3 c&lt;/a&gt;
+						&lt;/div&gt;
+
+						&lt;div data-rel="slides"&gt;
+							&lt;div data-rel="slide" data-id="view1c"   &gt;
+								view 1 c	
+							&lt;/div&gt;
+							&lt;div data-rel="slide" data-id="view2c"&gt;
+								view 2 c
+							&lt;/div&gt;
+							&lt;div data-rel="slide" data-id="view3c" &gt;
+								view 3 c
+							&lt;/div&gt;
+						&lt;/div&gt;
+				&lt;/div&gt;
+
+
+			&lt;/div&gt;
+			&lt;div data-rel="slide" data-id="view2b"&gt;
+				view 2 b
+			&lt;/div&gt;
+			&lt;div data-rel="slide" data-id="view3b" &gt;
+				view 3 b
+			&lt;/div&gt;
+		&lt;/div&gt;
+&lt;/div&gt;
+
+
+</pre>
+
+<hr>
+
+<h3>API - javascript</h3>
+
+	<strong>Action on click of tab</strong><br>	
+	<pre>
+		itabs('ajax').event('click').tab('view2b',function(e){
+			// insert you action here
+		});
+	</pre>
+
+	<strong>Change title of tab</strong><br>	
+	<pre>
+		e.action.tab('data-for_of_tab').content('content');
+		
+		or
+
+		e.action.tab().content('content'); // this command get tab fron function clousure event
+
+		or
+
+		itabs('id_of_tabWrapper').action.tab('data-for_of_tab').content('content');		
+
+		or
+
+		itabs('id_of_tabWrapper').action.tab('data-for_of_tab').content('content');	
+	</pre>
+
+	<strong>Change title of slide</strong><br>	
+	<pre>
+		e.action.slide('data-id_of_slide').content('content');
+		
+		or
+
+		e.action.slide().content('content'); // this command get tab fron function clousure event
+
+		or
+
+		itabs('id_of_tabWrapper').action.slide('data-id_of_slide').content('content');		
+
+		or
+
+		itabs('id_of_tabWrapper').action.slide('data-id_of_slide').content('content');	
+	</pre>
+
+</body>
+</html>

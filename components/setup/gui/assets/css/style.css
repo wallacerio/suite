@@ -1,0 +1,165 @@
+.background{
+	background: #eee;
+}
+
+.content{
+	
+}
+
+.wrapper > header {
+	background: #00B3B9;
+}
+.wrapper > header .content{
+	/*background: #ddd;*/
+}
+
+.wrapper > header .wrapperBradcrumb .content{
+	background: #D2D2D2;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border-bottom: 1px solid #ccc;
+}
+
+.wrapper > footer {
+	background: #444;	
+	
+}.wrapper > footer p{	
+	color: #fff;
+}
+
+.wrapper > footer .content[data-rel="menu-footer"]{
+	border-bottom: 1px solid #333;
+}
+
+.wrapper > main{
+	color: #666;
+}
+
+
+.wrapper .contentBack {
+	height: 100%;
+}
+
+p{
+	margin: 10px;
+}
+
+
+.bgOptionShow{
+	/*background: #009AA0;*/
+	background: #222
+}.bgOptionShow .headerOption{
+	background: #444;
+	padding: 10px;
+	padding-left: 40px;
+}.bgOptionShow .headerOption p{	
+	margin: 0px !important;
+}
+
+.hide{
+	width: 1px !important;
+	visibility: hidden;
+	transition:300ms;
+}.show{
+	width: 100% !important;
+	visibility: visible;
+	transition:300ms;
+}
+
+
+
+[data-spanaction]{
+	display: table;
+	cursor: pointer;	
+	padding: 10px;
+}[data-spanaction]:hover{
+	background: #444;
+}
+
+.boxDown label{
+	display: block;
+}
+
+.boxDown label[data-rel="radio"]{
+	display: inline-table;
+	background: #000;
+	padding: 5px 5px 2px 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+}.boxDown label[data-rel="radio"]:hover{
+	background:#111;
+}.boxDown label[data-rel="radio"]:active{
+	background:#000;
+}
+
+.boxDown input:not([type="submit"]){
+	padding: 10px;
+	border:0px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	background: #000;
+	outline: none;
+	color: #fff;
+	width: 100%;
+}.boxDown input:not([type="submit"]):focus{
+	background: #111;
+	color: #fff;
+}
+
+.boxDown input[type="submit"]{
+	padding: 10px;
+	border:0px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	background: #00B3B9;
+	outline: none;
+	color: #333;
+	cursor: pointer;
+
+}.boxDown input[type="submit"]:hover{	
+	background: #00959A;
+	color: #333;
+}.boxDown input[type="submit"]:active{	
+	background: #00575A;
+	color: #fff;
+}
+
+#optionsShow pre{
+	white-space: pre-wrap;
+}
+
+
+
+
+#wrapperListOptions{
+	overflow-y: scroll;
+	overflow-x: hidden;
+	/*border-top: 1px solid #444;*/
+}
+
+
+
+
+.menuBreadcrumb {
+	background: #444;
+}.menuBreadcrumb ul{
+}.menuBreadcrumb ul li {
+	display: inline-table;
+}.menuBreadcrumb ul li::before {	
+	display: inline-table;
+	padding: 5px;
+	/*background: #ccc;*/
+	cursor: pointer;
+	content:" / ";
+}.menuBreadcrumb ul li a{
+	display: inline-table;
+	padding: 5px 10px;
+	/*background: #ccc;*/
+	cursor: pointer;
+	color: #00B3B9 ;
+}.menuBreadcrumb ul li a:hover{
+	background: #00B3B9;
+	color: #fff;
+}

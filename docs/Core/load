@@ -1,0 +1,68 @@
+# load
+
+
+#Classe -------------------------------------------------
+
+	A classe Suite é a classe principal do framework, ela é responsavel
+	pela inicialização do framework, e possui os seguintes metodos:
+
+	- load
+
+		Carrega toda a estrutura do framework, possui um parametro opcional.
+
+		Suite::load($array);
+
+		$array = Este parametro deve ser um Array, e suas propriedades são as seguintes:
+
+			return = define que o html gerado não deve ser impresso no dispositivo,
+					mas sim retornado, para possivel armazenamento em variavel.
+
+			url = Simula o acesso a um determinado controller.
+
+		Exemplo:
+
+			$html = Suite::load(array(
+				'return'=>true,
+				'url'=>'help/language'
+				'get'=>array('color'=>'blue'),
+				'post'=>array('color'=>'red')
+			));
+
+
+	- html
+
+		Este método permite gerar um html personalizado para a renderização.
+
+			Exemplo:
+
+				echo Suite::html('[register:head] antes [suite:view] depois [register:head]',$options);
+
+		OBS: é possivel passer um shortcode como string.
+
+	- component
+
+		Este método inicializa e retorna um componente especifico,
+		assim é possivel utilizar somente os componentes do framework
+		e utilizar outra estrutura de site.
+
+		O parametro deve ser o nome de um componente, e como retorno
+		é a classe Control do componente.
+
+		ARRAY_OPTIONAL_PARAMETERS = é um parametro opcional, deve conter um array com parametros de carregamento do componente
+
+		Exemplo:
+	 		
+	 		Suite::component('loadtime',ARRAY_OPTIONAL_PARAMETERS)->test();
+
+	 		OBS: test é um método do componente loadtime.
+
+
+#URL -------------------------------------------------	 		
+
+	Mesmo com uma aplicação definida como padrão é possivel acessar uma outra
+	aplicação presente no projeto, para isso, apenas referencie na url 
+	a aplicação seguida de dois pontos ':'.
+
+	Exemplo:
+
+		http://domain.com/suite_app/:outherapp/controller/action

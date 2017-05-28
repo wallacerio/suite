@@ -1,0 +1,66 @@
+/**
+ * iTabs.css v1.4 - 13/09/2016
+ * divide of content by tab
+ *
+ * developed by Wallace Rio <wallrio@gmail.com>
+ * wallrio.com
+ * 
+ * tested on firefox v48 /chrome v38
+ * 
+ */
+
+
+.itabs.tabContent{
+}.itabs.tabContent [data-rel="tabs"]{		
+	background: #E1E1E1;
+}.itabs.tabContent [data-rel="tabs"] > a[data-rel="tab"]{
+	display: table-cell;
+	padding: 14px;
+	border: 0px;
+	margin: 0px;
+	box-shadow: none;
+	cursor: pointer;
+	text-align: center;
+	font-weight: bold;
+	color: #4F4F4F;
+	text-decoration: none;
+	padding-bottom: 11px;
+	background: #eee;
+	text-transform: uppercase;	
+	vertical-align: middle;
+}.itabs.tabContent [data-rel="tabs"] > a[data-rel="tab"]:hover{
+	background: #DCDCDC;
+}.itabs.tabContent [data-rel="tabs"] > a[data-rel="tab"]:active{
+	background: #aaa;
+	color: #fff;
+}.itabs.tabContent [data-rel="tabs"] > a[data-rel="tab"][disabled="disabled"]{
+	pointer-events:none;
+	display: inline-table;
+	padding: 10px;
+	margin-right: -6px;
+	background: #ccc;
+	color: #A7A7A7;
+	box-shadow: 0px 0px 0px 1px #ccc inset;	
+}.itabs.tabContent [data-rel="tabs"] > a[data-rel="tab"][data-status="active"]{
+	background: #4F4F4F;
+	padding-top: 10px;
+	padding-bottom: 6px;
+	color: #fff;
+	font-weight: bold;
+}.itabs.tabContent [data-rel="tabs"] > a[data-rel="tab"][data-status="active"]:hover{
+	background: #3B3939;
+}.itabs.tabContent [data-rel="tabs"] > a[data-rel="tab"][data-status="active"]:active{
+	background: #282828;
+}.itabs.tabContent [data-rel="slides"] {	
+}.itabs.tabContent [data-rel="slides"] [data-rel="slide"]{
+	display: block;	
+	visibility: hidden;
+	/*padding-top: 10px;*/
+	height: 0px;
+	overflow: hidden;
+}.itabs.tabContent [data-rel="slides"] [data-rel="slide"][data-status="active"]{
+	visibility: visible;
+	height: auto;
+}
+
+

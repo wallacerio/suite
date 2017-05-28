@@ -1,0 +1,52 @@
+
+
+	# Manupulando o conteúdo
+
+		para alterar o conteúdo utilize o método 'content()'.
+
+		Exemplo:
+
+			Suite_view::content("conteudo_TEXT_OU_HTML");	
+
+
+		Página Erro 404:
+
+			para enviar um sinal de página não encontrada utilize o metodo 'content()' passando como parametro o 
+			termo FALSE.
+
+			Exemplo:
+
+				Suite_view::content(false);	
+
+
+			OBS: como boa prática é bom executar uma validação antes de enviar o FALSE, pois pode ser outro componente
+				esteja manipulando o conteúdo, para isso utilize a forma abaixo:
+
+				$html = Suite_view::content();				
+				if($html === false)
+				Suite_view::content(false);	
+
+
+				O código acima verifica a existencia de algum conteúdo, caso não houver, 
+				então envia o sinal de página não encontrada (404)
+
+
+
+
+	# return@
+
+		Para capturar o retorno do método do action requisitado via url, utilize na url o parametro return@.
+
+		Exemplo:
+
+			http://domain.com/return@CAMINHO_DO_ACTION
+
+		Exemplo 2:
+
+			É possivel utilizar em qualquer tipo de requisiçãp, veja uma requisição usando a lib Http/Request/url:
+
+
+			$domain = Suite_globals::get('http/domain/url');
+			$result = Suite_libs::run('Http/Request/url',array(
+				'url'=>$domain.'return@help/topics'
+			));

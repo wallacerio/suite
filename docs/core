@@ -1,0 +1,77 @@
+# Núcleo do Suite
+
+
+#Estrutura -------------------------------------------------
+
+	O núcle do framework segue a seguinte estrutura:
+
+	/suite---
+			components/
+			core/
+			libs/
+
+	components:
+		Neste diretório contém os componentes do framework, quase todas as funcionalidades do Suite são implementadas
+		através dos componentes.
+
+	core:
+		Neste diretório contém os arquivos de núcleo do framework.
+
+	libs:
+		Neste diretório contém classes de utilização do framework.
+
+
+#Processo -------------------------------------------------
+
+		Todo o processamento do site é direcionado para o arquivo index.php, a index então inicializa o Suite Framework.
+
+		Ao ser inicializado o Suite carrega de primeiro momento o bootstrap, 
+		o bootstrap então executa os seguintes processos:
+
+		new Suite_http()
+			Captura informações de requisição
+
+		new Suite_path()		
+			Define informações de caminho da aplicação
+
+		new Suite_server()
+			Captura informações do servidor
+
+		new Suite_settings()
+			Captura informações de configuração inicial
+
+		$components = new Suite_components()
+			Inicializa classe de componentes
+
+		$html = $components->load()
+			Carrega os componentes do Suite Framework
+
+		$html = Suite_view::out($html)
+			Direciona o metodo responsável pelo render 
+
+		$html = $components->render($html)
+			Executa o método render dos componentes
+
+		Suite_view::render($html)
+			Renderiza a aplicação no dispositivo
+
+
+#Caminho do processo -------------------------------------------------
+
+	Requisição do usuário 	
+		↓
+	BOOTSTRAP				
+		↓
+	COMPONENTE.load	= inicializa e executa os componentes - método load
+		↓
+	altera o render ?
+			↓
+		não - sim → [define o novo metodo de render] 
+		 ↓										↓
+	[envia a aplicação para a VIEW]				|
+			|									|
+			| ←----------------------------------
+			↓
+	COMPONENTE.render = (opcional) método no componente que permite manipulação do html antes de renderizar 
+			↓
+	[VIEW renderiza a aplicação no dispositivo]

@@ -1,0 +1,446 @@
+/**
+ * Design
+ * Struct for layout on your application
+ * 
+ * Author: Wallace Rio <wallrio@gmail.com>
+ * Last Update: 26/04/2017 
+ * Version: 1.3
+ *  
+ * -----------------------------------------
+ * 
+ * .mobile-hide = esconde em modo mobile
+ * .desktop-hide = esconde em modo desktop
+ * .tablet-hide = esconde em modo tablet
+ * .desktop-center = centraliza o texto em modo mobile
+ * .tablet-wfull = deixa 100% width em modo tablet
+ *
+ *
+ * .button-toggle-class = ao utilizar esta classe o elemento que a contém se torna um bottão toggle,
+ * 						ele inclui a classe (.active) em outro elemento baseado em data-target e data-event.
+ *
+ * 			data-target = informa o elemento que receberá a classe. (pode incluir varios separados por espaço)
+ *    		data-event  = informa o tipo de evento que chamada a ação (click, mouseover, mouseup, outros...) 			
+ *    		
+ *      	exemplo: <span class="button-toggle-class" data-event='click' data-target="#menuSide .menu-slide-close"></span>
+ *
+ *
+ * 
+ */
+
+
+
+
+/* Struct base Design ------------------- */
+
+	[data-design] {
+		display: table;
+		height: 100%;
+		width: 100%;	
+	}
+	[data-design] .wrapper{
+		display: table;
+		width: 100%;
+		height: 100%;
+	}
+	[data-design] header{
+		display: table-cell;	
+		height: 0.1px;
+	}
+	[data-design] main{
+		display: table-row;	
+	}
+	[data-design] footer{
+		display: table-cell;	
+		height: 0.1px;
+	}
+	[data-design] .content{
+		display: table;
+		width: 90%;	
+		margin: auto;
+		height: 100%;
+	}
+
+
+	[data-design] .header-bar{
+		display: block;
+	}
+
+/* Struct Frame Design ------------------- */
+
+	[data-design] .frame{	
+		position: relative;
+		display: table;
+		width: 100%;
+		height: 100%;
+	}
+
+	[data-design] .frame .side{	
+		position: relative;
+		display: table-cell;
+		vertical-align: top;
+	}[data-design] .frame .work{
+		position: relative;
+		display: table-cell;	
+		vertical-align: top;
+	}
+
+
+
+
+/* Struct Column/Action Design ------------------- */
+
+	
+
+	[data-design] .left{
+		text-align: left;
+	}[data-design] .center{
+		text-align: center;
+	}[data-design] .right{
+		text-align: right;
+	}
+
+	[data-design] .top{
+		vertical-align: top;
+	}[data-design] .middle{
+		vertical-align: middle;
+	}[data-design] .bottom{
+		vertical-align: bottom;
+	}
+
+	
+	[data-design] .hide{
+		display: none !important;
+	}
+
+
+/* Responsible: smartPhone = portrait; */
+@media screen and (max-width: 320px) {	
+	[data-design] .frame{	
+
+	}[data-design] .frame .side{	
+		display: table-row;
+		width: 100%;
+	}[data-design] .frame .work{
+		display: table-row;
+		width: 100%;
+	}
+
+	[data-design] .mobile-center{
+		text-align: center;
+	}
+	[data-design] .mobile-hide{
+		display: none !important;
+	}
+
+	
+
+
+
+
+	[data-design] .mobile-left,
+	[data-design] .mobile-left > *{
+		text-align: left;
+		margin-right: auto !important;
+	}[data-design] .mobile-center,
+	[data-design] .mobile-center > *{
+		text-align: center;
+		margin: auto !important;
+	}[data-design] .mobile-right,
+	[data-design] .mobile-right > *{
+		text-align: right;
+		margin-let: auto !important;
+	}
+
+
+
+}
+/* Responsible: smartPhone = landscape; */
+@media screen and (min-width: 321px) and (max-width: 420px) {		
+	[data-design] .frame .side{	
+		display: table-row;
+		width: 100%;
+	}[data-design] .frame .work{
+		display: table-row;
+		width: 100%;
+	}
+
+	[data-design] .mobile-center{
+		text-align: center;
+	}
+	[data-design] .mobile-hide{
+		display: none !important;
+	
+	}
+
+	[data-design] .mobile-left,
+	[data-design] .mobile-left > *{
+		text-align: left;
+		margin-right: auto !important;
+	}[data-design] .mobile-center,
+	[data-design] .mobile-center > *{
+		text-align: center;
+		margin: auto !important;
+	}[data-design] .mobile-right,
+	[data-design] .mobile-right > *{
+		text-align: right;
+		margin-let: auto !important;
+	}
+
+}
+/* Responsible: tablet = portrait; */
+@media screen and (min-width: 421px) and (max-width: 768px) {
+
+
+	[data-design] .frame .side{	
+		display: table-row;
+		width: 100%;
+	}[data-design] .frame .work{
+		display: table-row;
+		width: 100%;
+	}
+
+	
+	[data-design] .tablet-hide{
+		display: none !important;
+	}
+
+	[data-design] .tablet-left,
+	[data-design] .tablet-left > *{
+		text-align: left;
+		margin-right: auto !important;
+	}[data-design] .tablet-center,
+	[data-design] .tablet-center > *{
+		text-align: center;
+		margin: auto !important;
+	}[data-design] .tablet-right,
+	[data-design] .tablet-right > *{
+		text-align: right;
+		margin-left: auto !important;
+	}
+}
+/* Responsible: tablet = landscape; */
+@media screen and (min-width: 769px) and (max-width: 959px) {
+	[data-design] .desktop-hide{
+		display: none !important;
+	}
+
+	[data-design] .tablet-left,
+	[data-design] .tablet-left > *{
+		text-align: left;
+		margin-right: auto !important;
+	}[data-design] .tablet-center,
+	[data-design] .tablet-center > *{
+		text-align: center;
+		margin: auto !important;
+	}[data-design] .tablet-right,
+	[data-design] .tablet-right > *{
+		text-align: right;
+		margin-left: auto !important;
+	}
+}
+/* Responsible: tablet = landscape; */
+@media screen and (min-width: 960px) and  (max-width: 1024px)  {
+	[data-design] .desktop-hide{
+		display: none !important;
+	}
+
+	[data-design] .desktop-left{
+		text-align: left;
+		margin-right: auto !important;
+	}[data-design] .desktop-center,
+	[data-design] .desktop-center > *{
+		text-align: center;
+		margin: auto !important;
+	}[data-design] .desktop-right,
+	[data-design] .desktop-right > *{
+		text-align: right;
+		margin-left: auto !important;
+	}
+}
+/* Responsible: desktop = landscape; */
+@media screen and (min-width: 1025px) {
+	[data-design] .desktop-hide{
+		display: none !important;
+	}
+
+	[data-design] .desktop-left{
+		text-align: left;
+		margin-right: auto !important;
+	}[data-design] .desktop-center,
+	[data-design] .desktop-center > *{
+		text-align: center;
+		margin: auto !important;
+	}[data-design] .desktop-right,
+	[data-design] .desktop-right > *{
+		text-align: right;
+		margin-left: auto !important;
+	}
+}
+
+
+
+
+
+[data-design] .margin{
+	padding: 10px ;
+	display: block;
+}
+
+
+
+/**/
+[data-design] .button{
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* menu --------------*/
+
+[data-design]  .menu{	
+	display: table;
+	height: 1px;
+	width: 100%;
+	background: #333;	
+	color: #ccc;	
+	position: relative;
+}[data-design]  .menu nav{
+
+}[data-design]  .menu nav ul {
+	padding: 0px;
+	margin: 0px;
+}[data-design]  .menu nav ul li {
+	list-style: none;
+	padding: 0px;
+	display: inline-table;
+	vertical-align: middle;
+}[data-design]  .menu nav ul li a{
+	display: table;
+	width: 100%;
+	padding: 10px;
+	text-decoration: none;
+	color: #ccc;
+	border-bottom: 1px solid #444;
+	
+	box-sizing: border-box;
+	white-space: nowrap;
+
+
+
+}[data-design]  .menu nav ul li:hover a{
+	background: rgba(0,0,0,.4);
+}[data-design]  .menu nav ul li a:hover{
+	background: rgba(0,0,0,.7);
+}[data-design]  .menu h3{
+	padding: 10px;
+	margin: 0px 0px 5px 0px;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #fff;
+}[data-design] .menu nav ul li a[data-status="active"]{
+	/*color: #024477;*/
+	background: rgba(0,0,0,.4);
+}[data-design] .menu nav ul li a[data-status="current"]{
+	/*color: #0A6EBC;*/
+	background: rgba(0,0,0,.7);
+
+}
+[data-design]  .menu nav > ul li ul {
+	position: absolute;
+	top:100%;
+	background: #444;
+	z-index: 1;
+	visibility: hidden;
+}[data-design]  .menu nav > ul  li:hover ul {	
+	visibility: visible;
+}
+
+
+
+
+
+
+
+
+/* Status ------------------------------------------- */
+
+[data-design] [data-designstatus="loading"]{
+	position: relative;
+}[data-design] [data-designstatus="loading"]::before{
+	background: #777;
+	content:"wait...";	
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;	
+	vertical-align: middle;
+	text-align: center;
+	padding-top: 20px;
+}
+
+
+[data-design] [data-designstatus="success"]{
+	position: relative;
+}[data-design] [data-designstatus="success"]::before{
+	background: green;
+	content:"success";	
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;	
+	vertical-align: middle;
+	text-align: center;
+	padding-top: 20px;
+}
+
+[data-design] [data-designstatus="error"]{
+	position: relative;
+}[data-design] [data-designstatus="error"]::before{
+	background: red;
+	content:"error";	
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;	
+	vertical-align: middle;
+	text-align: center;
+	padding-top: 20px;
+}
+
+[data-design] [data-designstatus="changed"]{
+	position: relative;
+	background: blue;
+}[data-design] [data-designstatus="changed"]::before{	
+	content:" ";	
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;	
+	vertical-align: middle;
+	text-align: center;
+	padding-top: 20px;
+}
+
+
+
+[data-design] .fly-top{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	background: #444;
+	z-index: 1;
+}
+

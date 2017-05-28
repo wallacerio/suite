@@ -1,0 +1,127 @@
+/* primeiro menu */
+
+.menu{
+	
+}.menu > ul {
+}.menu > ul > li {
+	list-style: none;
+	display: inline-table;
+	position: relative;
+	margin-left: -3px;
+}.menu > ul > li > a{
+	display: table;	
+	padding: 10px;
+	color: #fff;
+	text-decoration: none;
+	position: relative;
+	/*background: #079A9F;*/
+	border-right: 1px solid #079A9F;
+	
+}.menu > ul > li:hover > a{	
+	background: #048287;
+	color: #fff;
+}.menu > ul > li > a[data-status="active"]{	
+	background: #606060;
+	color: #ccc;
+}.menu > ul > li > a[data-status="current"]{	
+	background: #333;
+	color: #ccc;
+}.menu > ul > li > a[data-dropdown]{	
+	padding-left: 10px;
+	padding-right: 20px;
+}.menu > ul > li > a[data-dropdown]::after{	
+	content:"•";
+	padding-left: 5px;
+	position: absolute;
+	
+}
+
+
+
+/* posição dos submenus */
+.menu  ul > li {
+	position: relative;	
+}.menu  ul > li ul {
+	position: absolute;
+	visibility: hidden;
+	z-index: 100;
+	/*left: 100%;*/
+}.menu  ul > li > a + ul:hover {	
+	visibility: visible;
+}.menu  ul > li > a:hover + ul {	
+	visibility: visible;
+}
+
+
+
+/* submenus */
+.menu > ul > li  ul {
+	min-width: 120px;
+	border: 1px solid #888;
+	border-radius: 0px 4px 4px 4px;
+}.menu > ul > li  ul > li {
+	list-style: none;
+}.menu > ul > li  ul > li > a {		
+	display: table;	
+	width: 100%;
+	padding: 10px;
+	color: #333;
+	text-decoration: none;
+	position: relative;
+	background: #fff;
+	box-sizing:border-box;
+}.menu > ul > li  ul > li > a:hover {
+	background: #ccc;		
+}.menu > ul > li  ul > li > a[data-status="active"] {		
+	background: #ccc;
+	color: #444;
+}.menu > ul > li  ul > li > a[data-status="current"] {		
+	background: #333;
+	color: #ccc;
+}
+
+
+/* posição dos submenus */
+.menu > ul > li >  ul {
+	position:absolute;
+	padding: 0px;
+}.menu > ul > li > ul li ul {
+	left: 100%;
+	top: 0%;
+	position:absolute;
+}
+
+
+/* borda do menu */
+.menu > ul > li  ul > li:first-child > a {	
+	border-radius: 0px 4px 0px 0px ;
+}.menu > ul > li  ul > li:last-child > a {	
+	border-radius: 0px 4px 4px 4px;
+}
+
+
+
+
+
+
+
+
+
+/* BREADCRUMB --------------------- */
+
+.breadcrumb{
+	padding: 10px 0px;
+}.breadcrumb ol{
+	color: #666;
+}.breadcrumb ol li{
+	list-style: none;
+	display: inline-table;
+}.breadcrumb ol li a{
+	display: table;
+	padding-right: 5px;
+	padding-left: 5px;
+	color: #666;
+	text-decoration: none;
+}.breadcrumb ol li a:hover{	
+	color: green;
+}

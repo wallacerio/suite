@@ -1,0 +1,15 @@
+return@ (funcionalidade em TESTE)
+
+	# foi implementado a funcionalidade de acessar via url com o parametro (return@),
+	ao utilizar esse parametro é retornado em formato JSON o retorno do método da url.
+	Exemplo: http://domain.com/return@_plugin/contact/manager/setup/
+
+	Editado o arquivo Suite_http.php na linha 136 - 141 e na linha 195-197
+	
+	Editado o arquivo Suite_view.php na linha 136 - 144
+
+	O plugin contact utiliza essa funcionalidade através do método manager localizado no arquivo:
+		_plugin/contact/Control.php.
+
+		Esse método faz uma requisição para criar a página de gerenciamento do plugin
+

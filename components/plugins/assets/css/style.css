@@ -1,0 +1,259 @@
+
+
+
+/* Struct global ------------------- */
+
+	*{
+		font-family: arial;
+	}
+	html,body{
+		margin: 0px;
+		height: 100%;
+	}
+	body{
+		overflow-y: scroll;
+	}
+
+
+
+/* style Design ------------------- */
+
+
+
+
+[data-design] {	
+	/*background: linear-gradient(#f86900,#d40f00);*/
+	/*background: url(http://www.planwallpaper.com/static/images/6942095-abstract-background-wallpaper.jpg);*/
+	/*background: url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-18.jpg);*/
+	/*background: url(https://images5.alphacoders.com/549/549219.jpg);*/
+	background-size: cover !important;
+	background-attachment: fixed !important;
+	/*background: #ccc;*/
+}
+[data-design] header{	
+	
+}
+[data-design] main{	
+	/*background: yellow;*/
+}
+[data-design] footer{	
+	/*background: green;*/	
+}
+
+
+
+[data-design] .content{	
+	
+}
+[data-design] header .content{	
+	
+}
+[data-design] main .content{	
+	
+}
+[data-design] footer .content{	
+	/*background: rgba(0,0,0,.2);*/
+	/*padding: 10px 0px;*/
+	box-shadow: 0px 26px 9px -29px #000 inset;
+}[data-design] footer .content p{	 	
+	color: #fff ;
+}
+
+
+
+[data-design] .header-bar{
+	/*background: #111;*/
+	padding: 20px 0px;
+}
+
+
+[data-design] .frame .side {	
+	background: rgba(255, 255, 255, 0.74);
+}[data-design] .title,[data-design] h1{	
+	display: block;
+	padding: 10px;
+	margin: 0px;
+	margin-bottom: 5px;
+	color: #666;
+	font-weight: bold;
+	font-size: 25px;
+	
+}[data-design] .title,[data-design] h2{	
+	display: block;
+	padding: 10px;
+	margin: 0px;
+	color: #777;
+	font-weight: bold;
+	font-size: 20px;
+}[data-design] .sub-title,[data-design] h3{	
+	display: block;
+	padding: 0px 10px 14px;
+	margin: 0px;
+	color: #777;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 0px;
+}[data-design] p{	
+	padding: 5px 10px;
+	margin: 0px;
+	color: #777;	
+
+}[data-design] li {
+	color: #777;
+}
+
+[data-design] pre{
+	display: block;
+	padding: 10px;
+	margin: 10px;
+	background: #454545;
+	border-left: 5px solid #838383;
+	color: #ccc;
+	white-space: pre-line;
+}
+
+[data-design] .frame .work {	
+	/*background: rgba(255,255,255,0.9);*/
+}
+
+[data-design] .menu{
+	/*background: rgba(157, 103, 207, 0.28);*/
+	background: #d30f01;
+}[data-design] .menu nav ul li a {	
+	padding: 20px 15px !important;
+	transition:300ms;
+	border:0px;
+	color: #fff;
+	display: table-cell;
+vertical-align: middle;
+}[data-design] .menu nav ul li a:hover {		
+	
+	/*box-shadow: 0px -10px 0 0 rgba(61, 5, 89, 1);*/
+	background: rgba(66, 66, 66, .7);
+}[data-design] .menu nav ul li a[data-status="current"] {
+	/* color: #0A6EBC; */
+	background: rgba(66, 66, 66, 1);
+	/*transform:scale(1.2);*/
+	/*background: rgba(239, 239, 239, 1);*/
+/*color: #5E127E;*/
+}
+
+
+.header-bar .title{
+	color: #fff;
+	padding: 3px 10px 8px;
+}.header-bar .sub-title{
+	color: #fff;
+	font-weight: normal;
+}
+
+.logo{
+	fill:#fff;	
+}
+
+
+
+
+
+
+
+[data-design] .frame .side .title{	
+	color: #AB5233;
+}[data-design] .frame .side .sub-title{	
+	color: #AB5233;
+}
+
+
+[data-design] .success{
+	color: green;
+}
+
+[data-design] .error{
+	color: red;
+}
+
+
+
+[data-design].offline .work p{
+	color: #fff;
+	margin-bottom: 20px;
+}
+[data-design] .form.box-logon {
+	display: table;
+	max-width: 280px;
+	margin: auto;
+}
+
+
+[data-design] .form.box-logon form{
+	background: rgba(238, 238, 238, 0.89);
+	
+	padding: 20px;	
+	box-shadow: 0px 0px 16px -4px #000,0px 0px 0px 9px rgba(0, 0, 0, 0.2);
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+
+
+#resultLogon{
+	display: table;
+	width: 100%;
+	text-align: right;
+	height: 32px;
+}
+
+#resultLogon .loading{
+	color: #fff;
+	/*background: rgba(255,255,255,.9);*/
+	padding: 10px;	
+}#resultLogon .error{
+	/*background: rgba(255,255,255,.9);*/
+	padding: 10px;	
+}
+
+
+
+[data-design].online .effective .work{
+	background: #eee;
+}
+
+[data-design] cite{
+	color: #666;
+}
+
+
+
+
+
+
+.areaPluginBasic{
+	background: #333;
+}
+[data-design] .header-bar{
+	padding: 0px
+}
+
+[data-design] .menu nav ul li,
+[data-design] .menu nav ul li a{
+	height: 100%;
+}
+[data-design] header{
+	height: 59px;
+	position: relative;
+}[data-design] .header-bar{
+	height: 100%;
+	position: static;
+}
+
+
+
+[data-design] .menu nav ul li label{
+	color: #fff;
+	/*display: table;*/
+	font-size: 14px;
+}[data-design] .menu nav ul li select{
+	border: 0px;
+	background: #fff;
+	padding: 6px;
+}

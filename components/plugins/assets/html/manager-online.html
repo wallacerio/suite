@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{plugin:name} - Plugins Manager</title>
+</head>
+<body>
+
+
+
+<div data-design class="online">
+    <div id="menuSide" class="menu-slide  desktop-hide">
+        <span class="button-toggle-class menu-slide-close" id="a1" data-event='click' data-target="#menuSide .menu-slide-close"></span>
+        <nav>                        
+                                
+        </nav>
+    </div>
+
+    <div class="wrapper">
+
+        <header>
+            <div class="header-bar ">
+                <div class=" ">
+                    <div class="content">
+                        
+                        
+                        <div class="row hfull">
+                            <div class="column col3 middle areaPluginBasic">
+                                <span class="title">{plugin:name}</span>
+                                <span class="sub-title">{plugin:version}</span>
+                            </div>
+                            <div class="column ">
+                                <div class="menu hfull tablet-wfull tablet-hide mobi-hide" >                        
+                                    <nav class="hfull">                        
+                                        <ul data-suitearea="plugin-manager" class="hfull" >        
+                                            {plugin:managerarea}                                          
+                                            <li><a href="#" id="logout">Logout</a></li>
+                                        </ul>                     
+                                    </nav>
+                                </div>        
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                </div>
+
+            </div>
+            
+        </header>
+
+        <main>
+            <div class="content">
+                
+           
+
+                {plugin:content}
+                
+                
+
+
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="content ">
+                <p>{plugin:name} - {plugin:version}</p>
+            </div>
+        </footer>
+
+    </div>
+
+</div>
+
+
+
+
+
+</body>
+</html>
+
+

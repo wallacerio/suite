@@ -1,0 +1,65 @@
+# Translation
+
+
+	# Translation by reference
+
+	É um component desenvolvido com a finalizade de traduzir o site.
+
+	Para que o translation funcione de maneira correta, é preciso ter a seguinte
+	estrutura:
+
+	_data/
+		translation/
+			languages/
+				pt-br.json
+
+
+	os idiomas estarão no diretório languages, e deverão estar em formato JSON,
+	as traduções se relacionam com referencias, as referencias seguem da seguinte
+	forma, a chave é a referencia, o valor é a tradução.
+
+	Exemplo:
+
+		"country":"Pais"
+
+
+		OBS: No conteúdo apenas inclua a chave entre arrobas "@country@"
+
+
+	Nota: a chave da referencia deve ser sempre a base em ingles.
+	
+	Exemplo de arquivo IDIOMA.json
+
+	{
+		"header":{
+			"prefix":"pt-br",
+			"name":"Portugues - Brasil"		
+		},
+		
+		"reference":{		
+			"new":"novo",		
+			"country":"cais"		
+		}
+	}
+
+
+
+
+
+	# translation by path
+
+	Este metodo de tradução leva em consideração o caminho da url,
+	então ao acessar uma URL, o translation ira verificar a existencia do 
+	caminho relativo no diretório _data/translation/path e capturar o conteúdo do
+	arquivo [idioma].html.
+
+	para incluir a tradução na página use o widget de componente:
+
+		[component name="translation" widget="byURL"][/component]
+
+
+	Então, se um usuário cujo idioma for o ingles acessar a URL "http://domini.com/help/topics",
+	o translation ira procurar pelo arquivo no 
+	diretório "_data/translation/path/help/topics/en.html", então ira capturar o
+	conteúdo deste arquivo.
+

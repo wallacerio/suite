@@ -1,0 +1,38 @@
+# Alterar o método de tratamento de exceção --------------------------------
+
+	O Suite Framework exibe como padrão um formato básico de exceções, é possivel sobreescrever o método
+	padrão, para isso execute o seguinte comando e passe como parametro uma classe que contenha os métodos
+	para tratamento da exceção, segue o comando:
+
+		Suite_error::newMethod(new NOME_DA_NOVA_CLASSE);
+
+	Métodos obrigatórios:
+
+		A classe deve ter os seguintes métodos obrigatórios para tratamento da exceção:
+
+
+		public function handler($num, $str, $file, $line, $context = null){			
+			// code here			
+		}
+
+		public function shutdown() {
+			// code here			
+		}
+	 
+
+
+# Definir contexto --------------------------------
+
+	Para informar a localização de um possivel erro, inclua no código a chamada abaixo.
+
+	Assim, caso ocorra algum erro será mostrado o possivel local de origem do erro.
+
+
+	Suite_error::setContext(array(
+			"TIPO_DO_OBJETO"=>array(
+				"name"=>"NOME_DO_OBJETO",
+				"path"=>"DIRETORIO_DO_OBJETO"
+			)
+		));
+
+

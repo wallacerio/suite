@@ -1,0 +1,143 @@
+.layout.success-label{
+	color: green;
+}.layout.error-label{
+	color: #BC1515;
+}
+
+.layout.separatorh-layout{
+	border-right: 1px solid #ccc;
+}
+
+.layout.box-layout{
+	/*box-shadow: 0px 0px 14px -7px #000,0px 0px 0px 1px #00B3B9;*/
+	/*padding: 10px;*/
+	/*background: #fff;*/
+	width: 100%;
+	/*min-width: 300px;*/
+	display: inline-table;
+	margin: auto;
+	/*border-radius: 4px;*/
+	box-sizing: border-box;
+	/*min-height: 150px;*/
+}
+
+.memo-layout{
+	padding: 0px;
+}
+.layout-content{
+	/*padding: 20px;*/
+	color: #777;
+}
+.layout .sub-layout{
+	/*padding-left: 20px;*/
+}
+
+.layout .category{
+	padding: 10px ;
+	/*border-bottom:1px solid #ccc;*/
+}
+
+h2.layout{
+	color: #00B3B9;
+}
+h3.layout{
+	color: #00B3B9;
+	padding: 10px ;
+}
+
+hr.layout{
+	border:0px;
+	height: 1px;
+	background: #ccc;
+}
+
+a.layout{
+	display: block;		
+	color: #777;
+	padding: 10px;
+	border: 0px;
+	background: #eee;
+	cursor: pointer;
+	outline: none;
+	transition:100ms;
+	
+	margin-bottom: 2px;
+}a.layout:hover{
+	color: #fff;
+	background: #00B3B9;
+}
+
+a.layout.category{
+	padding: 5px;
+}a.layout.category:hover h3{	
+	color: #fff !important;
+}
+
+form.layout{
+	
+}form.layout label{
+	display: block;
+	color: #777;
+	text-align: left;
+	margin-bottom: 4px;
+}form.layout input:not([type="submit"]){
+	display: block;
+	color: #777;
+	padding: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	outline: none;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}form.layout input:not([type="submit"]):hover{
+	border: 1px solid #777;	
+	/*box-shadow: 0px 0px 12px -3px #00B3B9;*/
+}form.layout input:not([type="submit"]):focus{
+	border: 1px solid #00B3B9;	
+	box-shadow: 0px 0px 12px -3px #00B3B9;	
+}form.layout input[type="submit"]{
+	display: block;		
+	color: #fff;
+	padding: 10px;
+	border: 0px;
+	background: #00B3B9;
+	cursor: pointer;
+	outline: none;
+	transition:300ms;
+	border-radius: 3px;
+}form.layout input[type="submit"]:hover{
+	display: block;		
+	color: #fff;
+	padding: 10px;
+	border: 0px;
+	background: #009AA0;
+	cursor: pointer;
+	outline: none;
+
+
+}form.layout input[type="submit"]:active{
+	display: block;		
+	color: #fff;
+	padding: 10px;
+	border: 0px;
+	background: #0B8286;
+	cursor: pointer;
+	outline: none;
+	
+}
+
+
+
+.layout.boxDown{
+
+	color: #fff;
+	height: 100%;
+}
+
+
+@media (min-width: 769px){
+	.memo-layout{
+		padding: 20px;
+	}
+}

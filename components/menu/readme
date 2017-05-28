@@ -1,0 +1,42 @@
+# Menu
+
+
+	1. crie um arquivo com o nome config.json no diretório _data/menu/
+
+	2. a estrutura deste arquivo segue semelhante ao abaixo:
+
+
+		{
+	    "modules": {       
+	        "suite": {
+	            "@title":"@go to suite web site@",
+	            "@url":"http://suite.wallrio.com",            
+	            "@target":"_blank"            
+	        },
+	        "help": {
+	            "help/suite2": {
+	                "@title":"Suite2",
+	                "@content":"suite2"
+	            }
+	        }
+	    
+	    },
+	    "footer-menu": {
+	        "example-menu": {
+	            "@title": "@Example Menu Dynamic@",            
+	            "example-menu/submenu1": {
+	                "@title": "Sub Menu 1",
+	                "@content":"[component name=\"translation\" widget=\"byURL\"][/component]"
+	            },
+	            "example-menu/submenu2": {
+	                "@title": "Sub Menu 2",
+	                "@content":"Sub Menu 2"
+	            }
+	        },
+	        "novo/help": {
+	            "@title":"@help@",
+	            "@url":"http://suite.wallrio.com",
+	            "@target":"_blank"         
+	        }
+	    }
+	}

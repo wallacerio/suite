@@ -1,0 +1,49 @@
+{
+    "modules": {
+        "help": {            
+            "@visible": "true",
+
+            "help/novo-test": {
+                "@title": "Novidade",
+                "@visible": "true",
+                "@url": "",
+                "@target": "_top",
+                "@content": "ddd",
+                "help/novo-test/bb":{
+                    "@title":"BB"
+                }
+            },
+            "help/language":{
+                "help/language/portugues":{
+                    
+
+                }
+            }
+        },
+        "admin": {    
+            "@title":"Admin",
+            "admin/dd": {
+                "@title": "bb",
+                "@target": "",
+                "@visible": "true"                
+            }
+        },
+        "abc": {
+            "@title":"ABC",
+            "@url":"http://uol.com.br"            
+        }
+    },
+    "novo": {
+        "paises": {
+            "@title": "@country@",
+            "brasil": "Brasil",
+            "paises/united-states": {
+                "@title": "United States"
+            }
+        },
+        "novo/abc": {
+            "@title":"ABC",
+            "@url":"http://uol.com.br"            
+        }
+    }
+}

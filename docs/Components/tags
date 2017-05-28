@@ -1,0 +1,35 @@
+# TAGS
+
+	tags é responsavel por disponibilizar tags para uso na aplicação.
+
+
+	Segue as tags disponibilizadas:
+
+	# suite
+
+		Esta tag captura informação relacionada ao proprio suite.
+
+
+		[suite:view:_CURRENT_]
+
+			captura o conteúdo da view atual (somente o conteúdo)
+
+		[suite:view:*]
+
+			captura o conteúdo da view especificada
+
+			Exemplo:
+
+				[suite:view:home/example]
+
+				OBS: ira capturar o conteúdo da url home/example
+
+
+
+		[suite:app-get:*]
+
+			Esta tag captura o conteúdo de um arquivo especifico no diretório da aplicação.
+
+			Exemplo:
+
+				[suite:app-get:_html/analytics.html]

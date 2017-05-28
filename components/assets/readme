@@ -1,0 +1,19 @@
+# Configuração
+
+	Para definir as configurações, siga os seguintes passos.
+
+	1. crie um arquivo com o nome data.json no diretório _data/assets/.
+	2. neste arquivo deve conter 2 instruções, "json" e "compress".
+
+		json 		=	define se os arquivos de css e js devem ser 
+						unidos em 1 só arquivo.
+
+		compress 	=	define se deve minificar os arquivos
+
+
+	Exemplo de arquivo data.json:
+
+	{
+		"join":true,
+		"compress":true
+	}

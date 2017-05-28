@@ -1,0 +1,10 @@
+{
+	"header":{
+		"prefix":"pt-br",
+		"name":"Portugues - Brasil"		
+	},
+	
+	"reference":{		
+		"language":"idioma"
+	}
+}

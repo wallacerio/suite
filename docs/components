@@ -1,0 +1,38 @@
+# Os componentes utilizam alguns metodos para controle da aplicação, segue os metodos:
+
+	Load:
+
+		o Metodo load
+
+
+
+
+
+
+# Componentes ativos
+
+
+#view -------------------------------------------------
+	
+	Altera a renderização básica do Suite, possui métodos de renderização para 
+	renderizar o HTML gerado pela aplicação.
+
+#tags -------------------------------------------------
+
+	Disponibiliza tags para ser usada na aplicação.
+
+#register -------------------------------------------------
+	
+	?
+
+#plugins -------------------------------------------------
+	
+	Cria um sistema de plugin para a aplicação, cada plugin é executado semelhante a um componente do núcleo.
+
+#modules -------------------------------------------------
+	
+	Cria um sistema HMVC base para a aplicação.
+
+#menu -------------------------------------------------
+
+	Define os menus da aplicação

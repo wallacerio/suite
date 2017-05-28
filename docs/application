@@ -1,0 +1,58 @@
+# application
+
+	Toda aplicação, não importa a estrutura utilizada, elas possuem algo em comum para o bom funcionamento,
+	segue algums parametros e definições em comum:
+
+
+	1. Titulos e metas tags.
+
+		para nomear uma aplicação deve-se criar um Suite_global('app') semelhante ao abaixo:
+
+			Array
+			(	
+			    [meta] => Array
+			        (
+			            [title] => titulo_da_aplicação
+			            [description] => descrição
+			            [keywords] => 
+			            [robots] => 
+			            [author] => 
+			        )
+
+			    [action] => Array
+			        (
+			            [meta] => Array
+			                (
+			                    [title] => titulo_da_página_corrente
+			                    [description] => 
+			                    [keywords] => 
+			                    [robots] => 
+			                )
+
+			        )
+
+			)
+
+
+		Em:
+
+			[meta]		=	define as informações da aplicação
+			[action]	=	define as informações da página atual da aplicação
+
+
+			Assim a tag [app] pode utilizar essas informações para incluir nos campos onde elas são utilizadas.
+
+			Exemplo: inclua a tag [app:title] para mostrar o titulo da aplicação (meta/title)
+
+			Exemplo 2: inclua a tag [app.action:description] para mostrar a descrição da página atual (action/meta/description)
+
+
+
+	2. para usar qualquer valor contido em Suite_global('app'), apenas referencie a tag [app:PATH], onde 
+		PATH é a chave do array separado por uma barra /
+
+		Exemplo: [app:dir] 
+		
+		Exemplo 2: [app:meta/title] 
+
+		Exemplo 3: [app:action/meta/title] 

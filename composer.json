@@ -1,0 +1,24 @@
+{
+		    
+    "name": "wallrio/suite",
+    "version":"1.2",
+    "description": "framework for development web",
+    "keywords": ["framework","wallrio", "suite","components","plugins","widget"],
+    "type": "library",
+    "homepage": "http://suite.wallrio.com",	    
+    "license": "MIT",
+    "authors": [
+	    {
+		    "name": "Wallace Rio",
+		    "email": "wallacerio@wallrio.com",
+		    "homepage": "http://wallacerio.com"
+	    }
+    ],
+    "require": {
+    	"php": ">=4.2"  
+    },
+    "autoload": {        
+        "classmap": ["core/"]        
+    }       
+                                        
+}
