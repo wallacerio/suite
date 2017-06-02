@@ -248,7 +248,7 @@ class CompPlugins {
 	}
 
 
-	public function prepareError($args){
+	public static function prepareError($args){
 
 		$name = $args['name'];
 		$dir = $args['dir'].DIRECTORY_SEPARATOR;
@@ -291,7 +291,7 @@ class CompPlugins {
 
 
 
-				$this->prepareError($value);
+				self::prepareError($value);
 
 
 				$enabled = isset($config['enabled'])?$config['enabled']:false;
@@ -326,6 +326,60 @@ class CompPlugins {
 
 		return $resultLoadAll;
 	}
+
+public static function callPlugins($pluginName = null){
+	$pluginsList = self::getPlugins();
+		$resultLoadAll = Array();
+		
+				
+		if(isset($pluginsList)){
+
+			foreach ($pluginsList as $key => $value) {
+
+				$name = $value['name'];
+				$dir = $value['dir'];
+				$url = $value['url'];
+				$config = $value['config'];
+
+				if($name != $pluginName)
+					continue;
+
+				self::prepareError($value);
+
+
+				$enabled = isset($config['enabled'])?$config['enabled']:false;
+				if($enabled == true){
+					
+					$resultPlugin = Suite_class::load($dir,'plugin');
+
+					return $resultPlugin['control'];
+					/*if(method_exists($resultPlugin['control'], "load")){	
+
+						Suite_globals::set('current/dir',$dir);
+						Suite_globals::set('current/url',$url);
+					
+						$resultAction = $resultPlugin['control']->load();
+						$resultLoadAll[] = $resultAction;
+
+						
+
+						if(class_exists('CompAssets')) 
+							CompAssets::actionRegister($resultAction,'plugin_'.$name);
+					}*/
+				}
+
+				
+	
+				
+			}
+
+			
+
+			// Suite_globals::set('plugins/load',$resultLoadAll);
+		}
+
+		return $resultLoadAll;
+}
 
 public static function getPlugins($pluginName = null){
 	

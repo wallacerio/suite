@@ -16,7 +16,7 @@ class Suite_manager{
 
 	public static function status(){
 		
-		$result = Suite_session::get('suitemanager');
+		$result = Suite_session::get('suite_manager2');
 		if($result)
 			$logged = true;
 		else
@@ -48,7 +48,7 @@ class Suite_manager{
 
 				if($dataSave != null) $sessionData['data'] = $dataSave;
 				
-				Suite_session::set('suitemanager',$sessionData);
+				Suite_session::set('suite_manager',$sessionData);
 				return true;				
 			}
 		}
@@ -59,7 +59,7 @@ class Suite_manager{
 	}
 
 	public static function logout(){
-		Suite_session::destroy('suitemanager');
+		Suite_session::destroy();
 		return true;
 	}
 

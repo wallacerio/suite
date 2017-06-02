@@ -12,8 +12,9 @@
 
 class Suite_http{
 	
-	function __construct(){
-		$this->load();
+	function __construct($useSetHttp = true){
+
+		$this->load($useSetHttp);
 	}
 
 	/**
@@ -52,7 +53,8 @@ class Suite_http{
 	 * [load description]
 	 * @return [type] [description]
 	 */
-	public function load(){		
+	public function load($useSetHttp = true){			
+		
 
 		$root = isset($_SERVER['SCRIPT_FILENAME'])?$_SERVER['SCRIPT_FILENAME']:null;
 		if($root=='console'){
@@ -60,6 +62,8 @@ class Suite_http{
 		}else{
 			$root = dirname($root);		
 		}
+
+
 		
 		$host = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:null;
 		$agent = isset($_SERVER['HTTP_USER_AGENT'])?$_SERVER['HTTP_USER_AGENT']:null;
@@ -68,7 +72,13 @@ class Suite_http{
 		$protocol = isset($_SERVER['SERVER_PROTOCOL'])?$_SERVER['SERVER_PROTOCOL']:null;
 		$cookie = isset($_SERVER['HTTP_COOKIE'])?$_SERVER['HTTP_COOKIE']:null;		
 		
-		
+		if(strpos(strtolower($protocol), 'https')!==false)
+			$protocolString = 'https://';
+		else
+			$protocolString = 'http://';
+
+		$requestUrl = isset($_SERVER['REQUEST_URI'])?$protocolString.$host.$_SERVER['REQUEST_URI'].'/':null;
+
 		$argv = isset($_SERVER['argv'])?$_SERVER['argv']:null;		
 
 		$httpType = (strpos(strtolower($protocol), 'http')!==false)?'http':'https';
@@ -155,10 +165,14 @@ class Suite_http{
 		if(substr($action, strlen($action)-1,strlen($action))=='/')
 			$action = substr($action, 0,strlen($action)-1);
 
-	
+		
+		$prefix = Suite_globals::get('http/prefix');
+		$posfix = Suite_globals::get('http/posfix');
+
 		$target = $action;
 
 		$httpRequest = array(
+			'url'=>$requestUrl,			
 			'query'=>$queryReal,			
 			'host'=>$host,
 			'agent'=>$agent,
@@ -173,8 +187,8 @@ class Suite_http{
 				'dir'=>$domainPath
 				),
 
-			'prefix'=>'',
-			'posfix'=>'',
+			'prefix'=>$prefix,
+			'posfix'=>$posfix,
 			'action'=>$action,
 			'target'=>$target,
 			'queries'=>$variableArray,
@@ -188,17 +202,28 @@ class Suite_http{
 
 		
 
-		if($argv != null)
-			$httpRequest['argv'] = $argv;
+		if($argv != null){
+			// $httpRequest = array();
+			// $httpRequest['argv'] = $argv;
+		}
 
 		
 
-		Suite_globals::set('http',$httpRequest);
+		// if($useSetHttp == true){	
+			Suite_globals::set('http',$httpRequest);
+		// }
+
+		if($argv != null){
+			Suite_globals::set('http/argv',$argv);
+		}
+		// print_r(Suite_globals::get('http'));
+
 		Suite_globals::set('domain',array(
 			'host'=>$domain.DIRECTORY_SEPARATOR,
 				'url'=>$domainURL,
 				'dir'=>$domainPath
 		));
+
 
 		$this->defineHeader();
 	}

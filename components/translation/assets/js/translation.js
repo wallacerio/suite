@@ -144,17 +144,17 @@ translation.replaceBody = function(){
 }
 
 // Intercept Alert box
-translation.replaceAlert = function(){
-/*
+/*translation.replaceAlert = function(){
+
 	var alertNativeCode = window.alert;
 	window.alert = function(message) {
 	    translation.getTranslates(message,function(response){	    	    	
 	    	alertNativeCode.call(this, response);
 	    });
 	    return null;	
-	};*/
+	};
 }
-
+*/
 
 translation.getTranslates = function(content,callback){	
 	if(content == '' || content == undefined){

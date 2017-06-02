@@ -61,7 +61,8 @@ class Model{
 	public function console($argv = null){	
 		$out = '';
 
-		
+		/*echo "---------------------------\n";
+		print_r(Suite_globals::get(''));*/
 
 		if($argv == null)
 		$argv = Suite_globals::get('http/argv');
@@ -73,18 +74,22 @@ class Model{
 
 		$inputsArray = $argv;
 		$runner = isset($inputsArray[0])?$inputsArray[0]:null;
-		unset($inputsArray[0]);
-		$inputsArray = array_values($inputsArray);		
-		$inputsArrayPos['command'] = isset($inputsArray[0])?$inputsArray[0]:null;
-		unset($inputsArray[0]);
-		$inputsArray = array_values($inputsArray);
+		if(isset($inputsArray)){
+			unset($inputsArray[0]);		
+			$inputsArray = array_values($inputsArray);		
+			$inputsArrayPos['command'] = isset($inputsArray[0])?$inputsArray[0]:null;
+			unset($inputsArray[0]);
+			$inputsArray = array_values($inputsArray);
+		}else{
+			$inputsArrayPos['command'] = null;
+		}
 	
 		$inputsArrayPos['parameters'] = $inputsArray;		
 		$inputsArray = $inputsArrayPos;
 
 		$command = isset($inputsArrayPos['command'])?$inputsArrayPos['command']:null;
 		
-
+		// print_r($inputsArray);
 
 		$result = @Suite_libs::run('Http/Request/dir',array(
 			'dir'=>'_component/setup/console',				
@@ -93,6 +98,7 @@ class Model{
 
 
 		
+		// print_r($result);
 		
 
 		$result = CompConsole::analize($result,$inputsArray,$showLegend);
@@ -117,6 +123,7 @@ class Model{
 
 		$out .= "\n\n";
 		
+
 		return $out;
 	}
 

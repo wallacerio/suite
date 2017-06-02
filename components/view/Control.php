@@ -55,6 +55,8 @@ class Control {
 
 	public function render404($view = ''){			
 		
+		$view_url = Suite_globals::get('http/url');
+
 		header("HTTP/1.0 404 Not Found");		
 		
 		$appDir = Suite_globals::get('app/dir');
@@ -74,6 +76,9 @@ class Control {
 			$viewHtmlDir = $coreDir . 'components/view/html/' ;
 			$html_index = file_get_contents($viewHtmlDir.'404.html');
 		}
+
+
+		$html_index = str_replace('[view:url]', $view_url, $html_index);
 
 		return $html_index;
 	}

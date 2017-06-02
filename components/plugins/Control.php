@@ -8,7 +8,18 @@ class Control extends Model{
 
 	}
 
-	
+	/**
+	 * chama o Control.php do plugin
+	 * @param  [type] $pluginName [description]
+	 * @return [type]             [description]
+	 */
+	public function call($pluginName = null){
+		$plugins = new CompPlugins();
+		$result = $plugins->callPlugins($pluginName);		
+		return $result;
+	}
+
+
 	public function load(){
 			
 		$plugins = new CompPlugins();

@@ -61,6 +61,19 @@ class CompAssets{
 			}
 		}
 
+
+		// gerado pelo parametro $returns do metodo html() da classe Suite_bootstrap
+		$actionArray = Suite_globals::get('html/returns');
+		if(count($actionArray)>0)
+		foreach ($actionArray as $keyUnit => $valueUnit) {
+			if(isset($valueUnit['replace'])){
+				$replace = $valueUnit['replace'];	
+				foreach ($replace as $key => $value) {					
+					$html = str_replace($key, $value, $html);		
+				}	
+			}
+		}
+
 		
 		
 		return  $html;
@@ -102,6 +115,20 @@ class CompAssets{
 
 		// gerado pelo load dos components
 		$actionArray = Suite_globals::get('components/load');
+		if(count($actionArray)>0)
+		foreach ($actionArray as $keyUnit => $valueUnit) {
+			if(isset($valueUnit['register'])){
+				if(isset($valueUnit['register-overwrite']) == true){
+					CompRegister::clean();
+				}
+
+				$register = $valueUnit['register'];
+				CompRegister::join($register);		
+			}
+		}
+
+		// gerado pelo parametro $returns do metodo html() da classe Suite_bootstrap
+		$actionArray = Suite_globals::get('html/returns');
 		if(count($actionArray)>0)
 		foreach ($actionArray as $keyUnit => $valueUnit) {
 			if(isset($valueUnit['register'])){

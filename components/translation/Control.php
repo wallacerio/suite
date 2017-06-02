@@ -32,7 +32,7 @@ class Control extends Model{
 		$returnTags = $this->insertTag();	
 		$register = $returnTags;
 		$register[] = array('script'=>array('parameters'=>array('src'=>$translationJs,'type'=>'text/javascript'),'into'=>'first-head'));
-		
+
 		return array(
 			'register' => $register 
 		);

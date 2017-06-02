@@ -28,15 +28,25 @@ require_once suite_path.'/core/Suite_manager.php';
 
 class Suite_bootstrap{
 	
-	function __construct(){
+	function __construct($useSetHttp = true){
 		
 		$this->options();
-		
-		// new Suite_error();
-		new Suite_http();
+
+		// new Suite_error();		
+		new Suite_http($useSetHttp);
 		new Suite_path();		
 		new Suite_server();
-		new Suite_settings();				
+		new Suite_settings();
+			
+			
+			
+			
+
+
+			
+	
+			
+					
 	}
 
 
@@ -47,6 +57,7 @@ class Suite_bootstrap{
 	 * @return [type]             [description]
 	 */
 	public function component($name = null,$parameters = null){	
+
 
 		// $components = new Suite_components();	
 		// $components->load($parameters);		
@@ -74,10 +85,17 @@ class Suite_bootstrap{
 			}
 		}
 		
+		
 
 		$resultLoad = Suite_class::load($componentDir);		
+
+		// echo "-------------\n\n";
+		// print_r($resultLoad);
+		// $resultLoad['control']->test();
+
 		return $resultLoad['control'];
 	}
+
 
 
 	/**
@@ -86,14 +104,38 @@ class Suite_bootstrap{
 	 * @param  [type] $options [description]
 	 * @return [type]          [description]
 	 */
-	public function html($html = '',$options = null){	
+	public function html($html = '',$options = null,$returns = null){	
 		$options['return'] = true;
 		Suite_http::set($options);
 		$components = new Suite_components();	
+		$components->htmlReturns($returns);								
 		$components->load();								
 		$html = Suite_view::out($html);		
 		$html = $components->render($html);						
 		return Suite_view::render($html,$options);
+	}
+
+	/**
+	 * Load main Class
+	 * @param  [type] $options [description]
+	 * @return [type]          [description]
+	 */
+	public function loadMain($options = null){		
+
+		$appDir = Suite_globals::get('app/dir');
+		$appUrl = Suite_globals::get('app/url');
+
+		$mainDir = $appDir.'Main.php';
+
+		$libs = Suite_class::loadLibs($appDir);
+		
+		$objectMain = Suite_class::loadSingle($mainDir);
+		if(method_exists($objectMain, 'index')){
+			$resultIndex = $objectMain->index($_REQUEST);
+			return $resultIndex;
+		}
+
+		return false;
 	}
 
 	/**
@@ -105,7 +147,12 @@ class Suite_bootstrap{
 	
 		Suite_http::set($options);		
 		
-	
+		// load main Class
+		$objectMain = $this->loadMain();		
+		/*if(isset($objectMain['break']) && $objectMain['break'] === true){	
+			return false;
+		}*/
+
 		$components = new Suite_components();	
 		$html = $components->load();
 
@@ -132,10 +179,12 @@ class Suite_bootstrap{
 		// $html = $resultOut;
 
 		$html = $components->render($html);	
-		$html = $components->render($html);	
 						
-		return Suite_view::render($html,$options);
-		
+		$renderResult = Suite_view::render($html,$options);
+
+
+
+		return $renderResult;		
 	}
 
 	/**

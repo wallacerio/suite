@@ -398,11 +398,12 @@ class CompSetupCommands{
  * 
  */
 
+	define("base_path",dirname(__FILE__).DIRECTORY_SEPARATOR);
 	
 	if (version_compare(phpversion(), "5.3.0", "<""))
-		require dirname(__FILE__)."/libs/wallrio/suite/Suite.php";
+		require base_path."/vendor/wallrio/suite/core/Suite.php";
 	else
-		require "vendor/autoload.php";
+		require base_path."/vendor/autoload.php";
 
 	if(!Suite::component("setup","checkexist")){
 		echo "\n\n"."Component \"setup\" not found"."\n\n";

@@ -42,8 +42,22 @@ class Suite_class{
         
     }
 
-
-
+    /**
+     * load a single class
+     * (name of class is name of file)
+     * @param  [type] $dir [description]
+     * @return [type]      [description]
+     */
+    public static function loadSingle($dir = null){	
+    	$dirNameArray = explode('/', $dir);
+    	$className = str_replace('.php','',end($dirNameArray));
+    	if(file_exists($dir)){	
+    		require $dir;
+    		$obj = new $className(); 
+    		return $obj;
+    	}
+    	return false;
+    }
 
     /**
      * [loadLibs description]
@@ -79,8 +93,7 @@ class Suite_class{
 				continue;
 		
 			$className = substr($value,0,strrpos($value, '.'));
-
-
+			
 			if(class_exists($className)) continue;
 			$classContent =  file_get_contents($key);				
 			$classContent = str_replace('<?php', '', $classContent);																	
@@ -175,9 +188,11 @@ class Suite_class{
 		}
 
 			
+			
 		if(file_exists($controlPath)){		
 			
-
+/*echo "-----------------"."\n";
+			echo $controlPath;*/
 
 			$nameDirClass = (str_replace(DIRECTORY_SEPARATOR, '__', $nameDirClass));
 			$nameDirClass = (str_replace('\\', '__', $nameDirClass));

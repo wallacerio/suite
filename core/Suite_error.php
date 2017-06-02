@@ -15,6 +15,7 @@ class Suite_error{
 	public static $coreDir;
 	public static $ErrorsDir;
 	public static $ErrorsLastActionDir;
+	public static $contextError = Array();
 
 	private static $newMethod;
 
@@ -168,10 +169,24 @@ class Suite_error{
 	/**
 	 * [setContext description]
 	 * @param [type] $newArray [description]
-	 */
+	 *
+	 * example
+	* 
+	* if(class_exists('Suite_error'))
+	*			Suite_error::setContext(array(
+	*				'copy-console'=>array(
+	*					'source'=>$coreDir.'cp_console',
+	*					'target'=>$baseDir.'console',
+	*					'line'=>'26',
+	*				)
+	*			));	*/	
 	public static function setContext($newArray = null){
+		
 
-		$contentErrorsLastAction = isset($_COOKIE['suite_error'])?$_COOKIE['suite_error']:null;
+		
+
+		$contentErrorsLastAction = isset(self::$contextError)?self::$contextError:null;
+		// $contentErrorsLastAction = isset($_COOKIE['suite_error'])?$_COOKIE['suite_error']:null;
 
 		if($contentErrorsLastAction == 'null' || $contentErrorsLastAction == null){			
 			$contentErrorsLastActionObj = $newArray;
@@ -180,7 +195,8 @@ class Suite_error{
 			$contentErrorsLastActionObj = array_merge($contentErrorsLastActionObj,$newArray);				
 		}
 		
-		
+		self::$contextError = json_encode($contentErrorsLastActionObj);
+
 		if(!Suite_globals::get('http/argv'))
 		setcookie('suite_error',json_encode($contentErrorsLastActionObj),0,'/'," ");
 	}
@@ -192,7 +208,11 @@ class Suite_error{
 	 * @return [type]           [description]
 	 */
 	public static function getContext($viewMode = 'string'){
-		$contentErrorsLastAction = isset($_COOKIE['suite_error'])?$_COOKIE['suite_error']:null;	
+
+		$contentErrorsLastAction = isset(self::$contextError)?self::$contextError:null;	
+		
+		// $contentErrorsLastAction = isset($_COOKIE['suite_error'])?$_COOKIE['suite_error']:$contentErrorsLastAction;	
+		
 		if($contentErrorsLastAction == null) return '';
 		$contentErrorsLastActionObj = json_decode($contentErrorsLastAction,true);
 
@@ -205,8 +225,9 @@ class Suite_error{
 				if($viewMode == 'string'){
 					
 					$contextHtml .= $key."\n";
-					$contextHtml .= 'Name:'.$value['name']."\n";
-					$contextHtml .= 'Path:'.$value['path']."\n";
+					foreach ($value as $key2 => $value2) {							
+						$contextHtml .= $key2.':'.$value2."\n";						
+					}					
 					$contextHtml .= "\n\n";
 
 				}else if($viewMode == 'html'){
@@ -214,8 +235,9 @@ class Suite_error{
 					$contextHtml .= '<li>';
 					$contextHtml .= '<label><strong>'.$key.'</strong></label>';
 						$contextHtml .= '<ul>';
-						$contextHtml .= '<li><label><strong>Name:</strong></label> '.$value['name'].'</li>';
-						$contextHtml .= '<li><label><strong>Path:</strong></label> '.$value['path'].'</li>';
+						foreach ($value as $key2 => $value2) {							
+							$contextHtml .= '<li><label><strong>'.$key2.':</strong></label> '.$value2.'</li>';							
+						}
 						$contextHtml .= '</ul>';
 					$contextHtml .= '</li>';
 					$contextHtml .= '</ul>';

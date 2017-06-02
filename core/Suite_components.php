@@ -146,11 +146,22 @@ class Suite_components{
 	 * @param  [type] $options [description]
 	 * @return [type]          [description]
 	 */
+	public function htmlReturns($returns = null){
+		$name = time();
+		Suite_globals::set('html/returns/'.$name,$returns);
+
+		/*echo '<pre>';
+		print_r(Suite_globals::get('html/returns'));
+		echo '</pre>';*/
+	}
+
 	public function searchComponents($options = null){
 
 		$excludeComponents = isset($options['exclude'])?$options['exclude']:null;
 		$excludeComponentsArray = explode(',', $excludeComponents);
-	
+		
+
+
 			
 		$args = $_REQUEST;
 

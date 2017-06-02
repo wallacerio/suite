@@ -95,9 +95,7 @@ class CompTags{
     $action = Suite_globals::get('http/target');
     $actionArray = explode('/', $action);
     $actionArray = array_filter($actionArray);
-    $actionArray = array_values($actionArray);
-        
-
+    
     if($actionArray[0] == $prefix){
       unset($actionArray[0]);
       $actionArray = array_values($actionArray);

@@ -32,7 +32,9 @@ class Suite_libs{
 		if($libTarget == null)return false;
 		
 
-		
+	/*	echo '<pre>';
+		print_r( Suite_globals::get(''));
+		echo '</pre>';*/
 
 		$libTargetArray = explode('/',$libTarget);
 		
@@ -55,10 +57,12 @@ class Suite_libs{
 			
 
 			$libDir = $coreDir.'libs/'.$joinDirTest.'.php';
+
+			$libDirItClass = $coreDir.'libs/'.$joinDirTest.'/'.$joinDirTest.'.php';
 			
 			$libDirContruct = $coreDir.'libs/'.$firstDir.'/'.$joinDirTest.'.php';
 			
-			
+			// echo $libDirItClass."<br><br>";
 
 			if(file_exists($libDirContruct)){
 				$joinClass = $joinClass . $firstDir ;
@@ -70,7 +74,13 @@ class Suite_libs{
 			if(file_exists($libDir)){
 				$foundLib = true;
 				$libAction = $value;
+				break;
+				
+			}
 
+			if(file_exists($libDirItClass)){
+				$foundLib = true;
+				$libAction = $value;
 				break;
 				
 			}

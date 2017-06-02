@@ -18,12 +18,26 @@ require_once suite_path.'core/Suite_bootstrap.php';
 
 class Suite {		
 
+	public static function test($string = null){				
+		return isset($string)?$string:"test ok";
+	}
+
+	/**
+	 * [init description]
+	 * @param  [type] $options [description]
+	 * @return [type]          [description]
+	 */
+	public static function init($options = null){					
+		$bootstrap = new Suite_bootstrap(true);		
+		return $bootstrap;
+	}
+
 	/**
 	 * [load description]
 	 * @param  [type] $options [description]
 	 * @return [type]          [description]
 	 */
-	public static function load($options = null){				
+	public static function load($options = null){					
 		$bootstrap = new Suite_bootstrap();
 		$out = $bootstrap->load($options);				
 		return $out;
@@ -36,9 +50,14 @@ class Suite {
 	 * @return [type]             [description]
 	 */
 	public static function component($name = null,$parameters = null){	
-		$bootstrap = new Suite_bootstrap();
+		$bootstrap = new Suite_bootstrap(false);
 		return $bootstrap->component($name,$parameters);
 	}
+
+	/*public static function component2($name = null,$parameters = null){			
+		$bootstrap = new Suite_bootstrap(false);
+		return $bootstrap->component2($name,$parameters);
+	}*/
 
 	/**
 	 * [html description]
@@ -46,9 +65,9 @@ class Suite {
 	 * @param  [type] $options [description]
 	 * @return [type]          [description]
 	 */
-	public static function html($name = null,$options = null){	
+	public static function html($name = null,$options = null,$returns = null){	
 		$bootstrap = new Suite_bootstrap();
-		return $bootstrap->html($name,$options);
+		return $bootstrap->html($name,$options,$returns);
 	}
 
 	/**

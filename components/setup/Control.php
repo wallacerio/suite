@@ -17,9 +17,16 @@ class Control extends Model{
 
 		$baseDir = Suite_globals::get('base/dir');
 		$coreDir = Suite_globals::get('core/dir');
-
+		
 		if(!file_exists($baseDir.'console')){
-			copy($coreDir.'cp_console',$baseDir.'console');			
+			
+			
+				
+				
+
+			if(!copy($coreDir.'cp_console',$baseDir.'console')){				
+				
+			}
 		}
 		
 		$target = Suite_globals::get('http/target');
